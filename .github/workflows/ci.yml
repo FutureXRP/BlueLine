@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # §16 QA firewall: determinism, rule coverage, golden roofs,
+      # fabrication scan — all inside the engine suite
+      - run: pnpm --filter @blueline/engine test
+      - run: pnpm --filter @blueline/engine typecheck
+      - run: pnpm --filter @blueline/web build
