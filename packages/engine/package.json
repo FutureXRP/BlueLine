@@ -13,12 +13,16 @@
     "./render-svg": "./src/render-svg/index.ts",
     "./render-sheet": "./src/render-sheet/index.ts",
     "./render-dxf": "./src/render-dxf/index.ts",
-    "./fixtures": "./src/fixtures/index.ts"
+    "./fixtures": "./src/fixtures/index.ts",
+    "./pipeline": "./src/pipeline/index.ts",
+    "./intake": "./src/intake/extract.ts",
+    "./takeoff": "./src/takeoff/index.ts"
   },
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "demo": "tsx scripts/demo-sheet.ts"
+    "demo": "tsx scripts/demo-sheet.ts",
+    "blueprint": "tsx scripts/blueprint.ts"
   },
   "dependencies": {
     "pdf-lib": "^1.17.1",

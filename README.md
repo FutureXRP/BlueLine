@@ -1,5 +1,14 @@
 # Blueline
 
+**Describe the home you want → complete finished blueprints with a materials takeoff.** The AI's only job is understanding your words; everything else — layout, code validation, drawings, quantities — is deterministic. The guided editor remains available to refine a generated plan, but it is optional, not the product.
+
+```bash
+pnpm --filter @blueline/engine blueprint "1800 sq ft, 3 bed, 2.5 bath, 2-car garage, hip roof, open kitchen with island, home office, slab"
+# → test-output/blueprint.pdf (A-000/A-101/A-401/A-901) + blueprint.dxf + blueprint-takeoff.csv
+```
+
+Or run the web app and use the describe box on the home page (`/`). With `ANTHROPIC_API_KEY` set, Claude extracts the ProgramSpec from free text (prompt generated from the Zod schema so they can't drift); without it, a deterministic keyword parser handles common phrasing and the UI discloses which extractor ran and which fields it assumed.
+
 A web platform that interviews a client about their custom home, lets them shape a validated floor plan in a guided editor, and generates a complete, dimensioned, IRC-prescriptive construction document set — buildable, unstamped — as a 24×36 PDF sheet set plus DXF.
 
 **[Build.md](./Build.md) is the build bible.** The Non-Negotiables in its §2 govern everything in this repo.
@@ -18,6 +27,8 @@ packages/engine   — pure TypeScript geometry/validation/render engine (no UI)
   src/render-sheet/ pdf-lib ARCH D sheet set (A-000, A-101, A-401 so far)
   src/render-dxf/   minimal DXF writer (LINE/CIRCLE/ARC/TEXT, exploded dims)
   src/takeoff/      materials takeoff: model → quantity estimate (A-901 sheet + CSV)
+  src/intake/       description → ProgramSpec (Claude API or deterministic fallback)
+  src/pipeline/     describeToDocuments(): one call from text to PDF/DXF/takeoff
   src/rules/        irc-2021/*.json rule tables + roomPrograms/openingDefaults/stateRules
   src/fixtures/     golden fixture models (rect-3bed)
 apps/web          — Next.js 14 app: landing + guided editor (/editor)

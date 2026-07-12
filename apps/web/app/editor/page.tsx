@@ -32,7 +32,21 @@ interface DragState {
 }
 
 export default function EditorPage() {
-  const [history, setHistory] = useState<Model[]>(() => [rect3bed()]);
+  const [history, setHistory] = useState<Model[]>(() => {
+    // pick up a plan generated on the describe page, else the demo fixture
+    if (typeof window !== 'undefined') {
+      try {
+        const raw = localStorage.getItem('blueline.model');
+        if (raw) {
+          const m = JSON.parse(raw) as Model;
+          if (m.modelVersion === 1 && Array.isArray(m.rooms)) return [m];
+        }
+      } catch {
+        /* fall through to fixture */
+      }
+    }
+    return [rect3bed()];
+  });
   const [cursor, setCursor] = useState(0);
   const model = history[cursor]!;
 

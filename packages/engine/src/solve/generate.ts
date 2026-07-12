@@ -80,7 +80,11 @@ export function generateModel(spec: ProgramSpec, seed: number): Model {
     options.push({ w, d, err });
   }
   options.sort((a, b) => a.err - b.err || a.d - b.d);
-  const chosen = options[Math.min(jitter, options.length - 1)] ?? { w: minWidth, d: 384, err: 0 };
+  // seeded variety may only roam within the spec's area tolerance of the best fit
+  const eligible = options.filter(
+    (o) => o.err <= Math.max(options[0]?.err ?? 0, spec.areaTolerance),
+  );
+  const chosen = eligible[Math.min(jitter, eligible.length - 1)] ?? { w: minWidth, d: 384, err: 0 };
   width = chosen.w;
   depth = chosen.d;
   bestErr = chosen.err;
