@@ -586,18 +586,40 @@ function checkBracedWallLines(model: Model, rs: RuleSet): Finding[] {
   const rule = getRule(rs, 'BWL-SPC');
   if (!rule) return [verifyFinding('BWL-SPC', 'braced wall line spacing', {})];
   const max = intParam(rule, 'maxSpacingIn');
-  if (max === undefined) return [verifyFinding(rule.id, 'braced wall spacing parameter missing', {})];
+  const coveragePct = intParam(rule, 'minLineCoveragePct');
+  if (max === undefined || coveragePct === undefined) {
+    return [verifyFinding(rule.id, 'braced wall spacing parameter missing', {})];
+  }
   const box = bbox(model.footprint);
   const out: Finding[] = [];
-  for (const [label, span] of [
-    ['north–south', box.maxY - box.minY],
-    ['east–west', box.maxX - box.minX],
-  ] as const) {
-    if (span > max) {
+  // A wall line qualifies as a braced wall line candidate when the collinear
+  // wall segments at that position cover ≥ coveragePct of the perpendicular
+  // building extent. Spacing between successive qualifying lines is checked.
+  for (const axis of ['v', 'h'] as const) {
+    const extent = axis === 'v' ? box.maxY - box.minY : box.maxX - box.minX;
+    const spanOf = axis === 'v' ? box.maxX - box.minX : box.maxY - box.minY;
+    const lines = new Map<number, number>(); // position → summed length
+    for (const w of model.walls) {
+      const isV = w.x1 === w.x2;
+      if ((axis === 'v') !== isV) continue;
+      const pos = isV ? w.x1 : w.y1;
+      const len = Math.abs(w.x2 - w.x1) + Math.abs(w.y2 - w.y1);
+      lines.set(pos, (lines.get(pos) ?? 0) + len);
+    }
+    const qualifying = [...lines.entries()]
+      .filter(([, len]) => len * 100 >= extent * coveragePct)
+      .map(([pos]) => pos)
+      .sort((a, b) => a - b);
+    let worst = qualifying.length < 2 ? spanOf : 0;
+    for (let i = 1; i < qualifying.length; i++) {
+      worst = Math.max(worst, qualifying[i]! - qualifying[i - 1]!);
+    }
+    if (worst > max) {
+      const label = axis === 'v' ? 'east–west' : 'north–south';
       out.push(
         finding(
           rule,
-          `⚠ ENGINEER REQUIRED — ${formatFeetInches(span)} ${label} braced wall line spacing exceeds IRC prescriptive provisions (${rule.id}). This sheet is incomplete for permit until a licensed engineer details this condition.`,
+          `⚠ ENGINEER REQUIRED — ${formatFeetInches(worst)} ${label} braced wall line spacing exceeds IRC prescriptive provisions (${rule.id}). This sheet is incomplete for permit until a licensed engineer details this condition.`,
           {},
           'engineer',
         ),

@@ -58,7 +58,8 @@
       "title": "Braced wall line spacing",
       "params": {
         "maxSpacingIn": 720,
-        "minTotalBracedLengthPctPerLine": 16
+        "minTotalBracedLengthPctPerLine": 16,
+        "minLineCoveragePct": 50
       },
       "severity": "engineer",
       "citation": "2021 IRC R602.10.1 / Table R602.10.3 — REPRESENTATIVE VALUES, NOT VERIFIED",

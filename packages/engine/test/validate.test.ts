@@ -103,12 +103,19 @@ const failCases: Record<string, (m: Model) => Model> = {
     return m;
   },
   'BWL-SPC': (m) => {
+    // widen to 800 and remove interior braced lines: worst gap 800 > 720
     m.footprint = [
       { x: 0, y: 0 },
       { x: 0, y: 384 },
       { x: 800, y: 384 },
       { x: 800, y: 0 },
     ];
+    m.walls = m.walls.filter((w) => w.kind === 'exterior');
+    for (const w of m.walls) {
+      if (w.x1 === 720) w.x1 = 800;
+      if (w.x2 === 720) w.x2 = 800;
+    }
+    m.openings = m.openings.filter((o) => m.walls.some((w) => w.id === o.wallId));
     return m;
   },
 };
