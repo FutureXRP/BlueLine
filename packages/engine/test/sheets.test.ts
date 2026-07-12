@@ -38,7 +38,7 @@ describe('sheet set rendering', () => {
     expect(a.pdf.length).toBeGreaterThan(10000);
     expect(Buffer.from(a.pdf).equals(Buffer.from(b.pdf))).toBe(true);
     expect(a.geometryHash).toBe(b.geometryHash);
-    expect(a.sheetIndex.map((s) => s.id)).toEqual(['A-000', 'A-101', 'A-401']);
+    expect(a.sheetIndex.map((s) => s.id)).toEqual(['A-000', 'A-101', 'A-401', 'A-901']);
   });
 
   it('carries the NOT-SEALED notice on every sheet', async () => {

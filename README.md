@@ -17,6 +17,7 @@ packages/engine   — pure TypeScript geometry/validation/render engine (no UI)
   src/render-svg/   editor renderer (browser)
   src/render-sheet/ pdf-lib ARCH D sheet set (A-000, A-101, A-401 so far)
   src/render-dxf/   minimal DXF writer (LINE/CIRCLE/ARC/TEXT, exploded dims)
+  src/takeoff/      materials takeoff: model → quantity estimate (A-901 sheet + CSV)
   src/rules/        irc-2021/*.json rule tables + roomPrograms/openingDefaults/stateRules
   src/fixtures/     golden fixture models (rect-3bed)
 apps/web          — Next.js 14 app: landing + guided editor (/editor)
@@ -40,7 +41,7 @@ pnpm --filter @blueline/web build && pnpm --filter @blueline/web start   # edito
 | 3. render-svg + minimal editor | ✅ core loop: drag walls, invalid moves ghost + never commit |
 | 4. roof straight skeleton + golden fixtures | ✅ rect/L/T, hip + gable |
 | 5. dims + render-sheet A-101 end to end | ✅ **first milestone: fixture → dimensioned floor-plan PDF** |
-| 6. Remaining sheets (A-102…A-601) | ◻ A-401 done; A-102/201/202/301/501/E-101/601 next |
+| 6. Remaining sheets (A-102…A-601) | ◻ A-401 + A-901 (materials takeoff) done; A-102/201/202/301/501/E-101/601 next |
 | 7. solve/ | ✅ v0.1 (rect family, zone-band placement; annealer + L/T next) |
 | 8. Intake interview + spec sheet UI | ◻ (ProgramSpec Zod schema in place — prompts derive from it) |
 | 9. Supabase, lock flow, Stripe, watermarking | ◻ (watermark renderer exists; wiring next) |
@@ -60,3 +61,7 @@ pnpm --filter @blueline/web build && pnpm --filter @blueline/web start   # edito
 **Every value in `rules/irc-2021/*.json` is REPRESENTATIVE and ships `verified: false`.** A mandatory pre-launch task is line-by-line verification of every rule against the published 2021 IRC, recording the verifying session in each rule's `citation` and flipping `verified: true`. Until then every generated sheet carries VERIFY language, and the cover sheet says so explicitly.
 
 Deliverables are prepared under the IRC prescriptive provisions, exclude site-specific engineering, and are **not an architect's or engineer's sealed documents**.
+
+## Materials takeoff (A-901)
+
+`materialsTakeoff(model)` derives a purchase-planning quantity estimate directly from the locked model: concrete/vapor barrier/anchor bolts, studs + plates + headers (headers reuse the HDR-TBL selection, never invented), ceiling joists, rafters and ridge/hip/valley lengths from the straight skeleton with true slope-adjusted lengths, wall/roof sheathing, shingles, door/window counts by size (rated garage door called out), and gypsum including 5/8" Type X at the garage separation. Practice factors (spacing, waste percentages, sheet sizes) live in `rules/takeoffFactors.json`, not in code. Every item carries a one-line `basis` so a builder can sanity-check it, and every output — the A-901 sheet and `takeoffToCsv()` — carries the notice: **quantity estimate for budgeting only; verify with your framer and supplier before purchase.**

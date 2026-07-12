@@ -1,0 +1,24 @@
+{
+  "note": "Materials takeoff factors — construction-practice defaults, not code values. All dims integer inches. Waste factors are percentages. VERIFY WITH YOUR FRAMER/SUPPLIER before ordering.",
+  "verified": false,
+  "factors": {
+    "studSpacingIn": 16,
+    "plateLayers": 3,
+    "kingStudsPerOpening": 2,
+    "jackStudsPerOpening": 2,
+    "sheetWIn": 48,
+    "sheetHIn": 96,
+    "framingWastePct": 10,
+    "sheathingWastePct": 10,
+    "roofingWastePct": 10,
+    "gypsumWastePct": 12,
+    "anchorBoltSpacingIn": 72,
+    "slabThicknessIn": 4,
+    "slabVaporBarrier": true,
+    "shingleSquareSqIn": 14400,
+    "ceilingJoistSpacingIn": 16,
+    "rafterSpacingIn": 16,
+    "stickLengthIn": 192,
+    "sillSealPerimeter": true
+  }
+}
