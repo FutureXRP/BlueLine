@@ -1,0 +1,57 @@
+{
+  "ruleSetVersion": "irc-2021.v0",
+  "rules": [
+    {
+      "id": "R308-GLAZE",
+      "section": "R308",
+      "title": "Safety glazing hazardous locations",
+      "params": {
+        "nearDoorArcIn": 24,
+        "maxSillForHazardIn": 18,
+        "tubShowerZoneIn": 60
+      },
+      "severity": "warn",
+      "citation": "2021 IRC R308.4 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "R314-SMOKE",
+      "section": "R314",
+      "title": "Smoke alarm placement",
+      "params": {
+        "requiredInEachBedroom": true,
+        "requiredOutsideSleepingArea": true,
+        "requiredPerStory": true
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R314.3 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "R315-CO",
+      "section": "R315",
+      "title": "Carbon monoxide alarm placement",
+      "params": {
+        "requiredOutsideSleepingAreaWhenAttachedGarage": true
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R315.2 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "GAR-SEP",
+      "section": "R302.5",
+      "title": "Garage separation from dwelling",
+      "params": {
+        "minDoorFireRatingMin": 20,
+        "requireSelfClosing": true,
+        "forbidBedroomOpening": true,
+        "wallGypIn": "1/2",
+        "ceilingGypBelowHabitableIn": "5/8"
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R302.5.1, R302.6 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "note": "Catalog of stock openings. All dims integer inches.",
+  "doors": [
+    { "key": "ext-entry-36", "type": "door", "width": 36, "height": 80, "use": "exteriorEntry" },
+    { "key": "ext-rear-36", "type": "door", "width": 36, "height": 80, "use": "exteriorRear" },
+    { "key": "int-32", "type": "door", "width": 32, "height": 80, "use": "interiorStandard" },
+    { "key": "int-30", "type": "door", "width": 30, "height": 80, "use": "interiorBath" },
+    { "key": "int-28", "type": "door", "width": 28, "height": 80, "use": "interiorCloset" },
+    { "key": "garage-sep-32", "type": "door", "width": 32, "height": 80, "use": "garageSeparation", "fireRatingMin": 20, "selfClosing": true },
+    { "key": "slider-72", "type": "door", "width": 72, "height": 80, "use": "patio" }
+  ],
+  "windows": [
+    { "key": "win-36x60", "type": "window", "width": 36, "height": 60, "sill": 24, "operable": true, "use": "bedroomEgress" },
+    { "key": "win-48x60", "type": "window", "width": 48, "height": 60, "sill": 24, "operable": true, "use": "living" },
+    { "key": "win-36x48", "type": "window", "width": 36, "height": 48, "sill": 36, "operable": true, "use": "kitchen" },
+    { "key": "win-24x36", "type": "window", "width": 24, "height": 36, "sill": 48, "operable": true, "use": "bath" }
+  ],
+  "garageDoors": [
+    { "key": "gar-108", "type": "garageDoor", "width": 108, "height": 84, "bays": 1 },
+    { "key": "gar-192", "type": "garageDoor", "width": 192, "height": 84, "bays": 2 }
+  ]
+}

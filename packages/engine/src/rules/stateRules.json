@@ -1,0 +1,17 @@
+{
+  "note": "State gate at checkout (Build Bible §3). CONSERVATIVE DEFAULTS — every state except OK ships as 'verify' until legal review flips it. 'restricted' states cannot check out.",
+  "verifiedDate": null,
+  "states": {
+    "AL": "verify", "AK": "verify", "AZ": "verify", "AR": "verify", "CA": "verify",
+    "CO": "verify", "CT": "verify", "DE": "verify", "FL": "verify", "GA": "verify",
+    "HI": "verify", "ID": "verify", "IL": "verify", "IN": "verify", "IA": "verify",
+    "KS": "verify", "KY": "verify", "LA": "verify", "ME": "verify", "MD": "verify",
+    "MA": "verify", "MI": "verify", "MN": "verify", "MS": "verify", "MO": "verify",
+    "MT": "verify", "NE": "verify", "NV": "verify", "NH": "verify", "NJ": "verify",
+    "NM": "verify", "NY": "verify", "NC": "verify", "ND": "verify", "OH": "verify",
+    "OK": "exempt", "OR": "verify", "PA": "verify", "RI": "verify", "SC": "verify",
+    "SD": "verify", "TN": "verify", "TX": "verify", "UT": "verify", "VT": "verify",
+    "VA": "verify", "WA": "verify", "WV": "verify", "WI": "verify", "WY": "verify",
+    "DC": "verify"
+  }
+}

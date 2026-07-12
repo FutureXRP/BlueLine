@@ -1,0 +1,33 @@
+{
+  "name": "@blueline/engine",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./model": "./src/model/index.ts",
+    "./ops": "./src/ops/index.ts",
+    "./validate": "./src/validate/index.ts",
+    "./solve": "./src/solve/index.ts",
+    "./roof": "./src/roof/index.ts",
+    "./dims": "./src/dims/index.ts",
+    "./render-svg": "./src/render-svg/index.ts",
+    "./render-sheet": "./src/render-sheet/index.ts",
+    "./render-dxf": "./src/render-dxf/index.ts",
+    "./fixtures": "./src/fixtures/index.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "demo": "tsx scripts/demo-sheet.ts"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
+  }
+}

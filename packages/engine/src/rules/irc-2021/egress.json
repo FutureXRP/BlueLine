@@ -1,0 +1,43 @@
+{
+  "ruleSetVersion": "irc-2021.v0",
+  "rules": [
+    {
+      "id": "R310-EGRESS",
+      "section": "R310",
+      "title": "Emergency escape and rescue openings in sleeping rooms",
+      "params": {
+        "minNetClearAreaSqIn": 821,
+        "minNetClearAreaGradeFloorSqIn": 720,
+        "minNetClearHeightIn": 24,
+        "minNetClearWidthIn": 20,
+        "maxSillHeightIn": 44
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R310.1, R310.2 — REPRESENTATIVE VALUES, NOT VERIFIED (5.7 sq ft = 820.8 sq in rounded up; 5.0 sq ft grade floor)",
+      "verified": false
+    },
+    {
+      "id": "R311-DOOR",
+      "section": "R311",
+      "title": "Required egress door",
+      "params": {
+        "minClearWidthIn": 36,
+        "minClearHeightIn": 78
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R311.2 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "R311-HALL",
+      "section": "R311",
+      "title": "Minimum hallway width",
+      "params": {
+        "minClearWidthIn": 36
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R311.6 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    }
+  ]
+}

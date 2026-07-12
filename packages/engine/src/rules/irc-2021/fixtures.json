@@ -1,0 +1,32 @@
+{
+  "ruleSetVersion": "irc-2021.v0",
+  "rules": [
+    {
+      "id": "BATH-CLR",
+      "section": "R307",
+      "title": "Bathroom fixture clearances",
+      "params": {
+        "wcFrontClearanceIn": 21,
+        "wcSideCenterlineIn": 15,
+        "minShowerIn": 30,
+        "minBathRoomDimIn": 60
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R307.1 / referenced figure — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "WIN-LIGHT",
+      "section": "R303",
+      "title": "Habitable room light and ventilation",
+      "params": {
+        "minGlazingPctOfFloor": 8,
+        "minOpenablePctOfFloor": 4,
+        "mechVentSubstitutionAllowed": true
+      },
+      "severity": "warn",
+      "citation": "2021 IRC R303.1 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    }
+  ]
+}

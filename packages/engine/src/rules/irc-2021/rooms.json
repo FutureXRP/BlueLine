@@ -1,0 +1,29 @@
+{
+  "ruleSetVersion": "irc-2021.v0",
+  "rules": [
+    {
+      "id": "R304-AREA",
+      "section": "R304",
+      "title": "Minimum habitable room area and dimension",
+      "params": {
+        "minAreaSqIn": 10080,
+        "minHorizontalDimIn": 84
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R304.1, R304.2 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "R305-CEIL",
+      "section": "R305",
+      "title": "Minimum ceiling height",
+      "params": {
+        "minHabitableCeilingIn": 84,
+        "minBathCeilingIn": 80
+      },
+      "severity": "hard",
+      "citation": "2021 IRC R305.1 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    }
+  ]
+}

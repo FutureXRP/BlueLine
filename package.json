@@ -1,0 +1,11 @@
+{
+  "name": "blueline",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "test": "pnpm -r test",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "packageManager": "pnpm@10.34.5"
+}

@@ -1,0 +1,23 @@
+{
+  "note": "Target areas in SQUARE INCHES, min dims in inches. Scaled by solver to hit total target.",
+  "programs": {
+    "primaryBedroom": { "targetAreaSqIn": [24192, 32256], "minDimIn": 132 },
+    "secondaryBedroom": { "targetAreaSqIn": [17280, 20736], "minDimIn": 120 },
+    "primaryBath": { "targetAreaSqIn": [10080, 14400], "minDimIn": 60 },
+    "fullBath": { "targetAreaSqIn": [5760, 8640], "minDimIn": 60 },
+    "halfBath": { "targetAreaSqIn": [2880, 4320], "minDimIn": 44 },
+    "kitchen": { "targetAreaSqIn": [20160, 28800], "minDimIn": 120 },
+    "living": { "targetAreaSqIn": [34560, 48960], "minDimIn": 156 },
+    "dining": { "targetAreaSqIn": [15840, 20160], "minDimIn": 120 },
+    "diningFormal": { "targetAreaSqIn": [20160, 25920], "minDimIn": 132 },
+    "office": { "targetAreaSqIn": [14400, 18720], "minDimIn": 108 },
+    "flex": { "targetAreaSqIn": [14400, 20160], "minDimIn": 108 },
+    "mudroom": { "targetAreaSqIn": [5760, 8640], "minDimIn": 60 },
+    "laundryRoom": { "targetAreaSqIn": [5040, 8640], "minDimIn": 60 },
+    "pantryWalkIn": { "targetAreaSqIn": [3456, 5760], "minDimIn": 48 },
+    "walkInCloset": { "targetAreaSqIn": [5040, 8064], "minDimIn": 60 },
+    "closet": { "targetAreaSqIn": [1728, 2592], "minDimIn": 24 },
+    "hall": { "minWidthIn": 42 },
+    "garageBay": { "targetAreaSqIn": [37440, 41472], "bayWidthIn": 144, "bayDepthIn": 264 }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "note": "Physical plan-symbol sizes for fixtures, integer inches (w = across facing, d = along facing). Product data, not code values.",
+  "fixtures": {
+    "wc": { "w": 20, "d": 28 },
+    "lavatory": { "w": 24, "d": 21 },
+    "tub": { "w": 60, "d": 30 },
+    "shower": { "w": 36, "d": 36 },
+    "kitchenSink": { "w": 33, "d": 22 },
+    "range": { "w": 30, "d": 26 },
+    "refrigerator": { "w": 36, "d": 30 },
+    "dishwasher": { "w": 24, "d": 24 },
+    "washer": { "w": 27, "d": 30 },
+    "dryer": { "w": 27, "d": 30 },
+    "waterHeater": { "w": 24, "d": 24 },
+    "smokeAlarm": { "w": 8, "d": 8 },
+    "coAlarm": { "w": 8, "d": 8 },
+    "panel": { "w": 16, "d": 4 }
+  }
+}

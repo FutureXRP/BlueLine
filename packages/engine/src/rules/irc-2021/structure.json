@@ -1,0 +1,68 @@
+{
+  "ruleSetVersion": "irc-2021.v0",
+  "rules": [
+    {
+      "id": "SPAN-CJ",
+      "section": "R802.4",
+      "title": "Ceiling joist spans (SPF #2, uninhabitable attic without storage)",
+      "params": {
+        "spacingIn": 16,
+        "spans": [
+          { "member": "2x6", "maxSpanIn": 244 },
+          { "member": "2x8", "maxSpanIn": 310 },
+          { "member": "2x10", "maxSpanIn": 380 }
+        ]
+      },
+      "severity": "engineer",
+      "citation": "2021 IRC Table R802.4(1) — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "SPAN-R",
+      "section": "R802.5",
+      "title": "Rafter spans (SPF #2, ceiling not attached, 20 psf ground snow)",
+      "params": {
+        "spacingIn": 16,
+        "spans": [
+          { "member": "2x6", "maxSpanIn": 205 },
+          { "member": "2x8", "maxSpanIn": 260 },
+          { "member": "2x10", "maxSpanIn": 318 },
+          { "member": "2x12", "maxSpanIn": 369 }
+        ]
+      },
+      "severity": "engineer",
+      "citation": "2021 IRC Table R802.5.1(1) — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "HDR-TBL",
+      "section": "R602.7",
+      "title": "Stock headers for openings in bearing walls (single story, 24 ft building width)",
+      "params": {
+        "headers": [
+          { "maxOpeningIn": 36, "member": "2-2x4" },
+          { "maxOpeningIn": 48, "member": "2-2x6" },
+          { "maxOpeningIn": 72, "member": "2-2x8" },
+          { "maxOpeningIn": 96, "member": "2-2x10" },
+          { "maxOpeningIn": 120, "member": "2-2x12" },
+          { "maxOpeningIn": 192, "member": "VERIFY WITH LOCAL CODE OFFICIAL — garage door header per table or engineered" }
+        ]
+      },
+      "severity": "engineer",
+      "citation": "2021 IRC Table R602.7(1) — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    },
+    {
+      "id": "BWL-SPC",
+      "section": "R602.10",
+      "title": "Braced wall line spacing",
+      "params": {
+        "maxSpacingIn": 720,
+        "minTotalBracedLengthPctPerLine": 16
+      },
+      "severity": "engineer",
+      "citation": "2021 IRC R602.10.1 / Table R602.10.3 — REPRESENTATIVE VALUES, NOT VERIFIED",
+      "verified": false
+    }
+  ]
+}
