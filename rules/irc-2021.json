@@ -1,0 +1,15 @@
+{
+  "edition": "2021",
+  "note": "IRC rule rows, v2 format (BLUELINE_V2.md §7.1). Every row starts verified:false and is listed in rules/UNVERIFIED.md. verified:false blocks launch branches, not development.",
+  "rows": [
+    { "id": "R311.7.5.1-rise", "code_ref": "IRC 2021 R311.7.5.1", "subject": "stair riser height, max", "value": 7.75, "unit": "in", "comparator": "<=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "" },
+    { "id": "R311.7.5.2-tread", "code_ref": "IRC 2021 R311.7.5.2", "subject": "stair tread depth, min", "value": 10, "unit": "in", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "" },
+    { "id": "R311.7.1-width", "code_ref": "IRC 2021 R311.7.1", "subject": "stair clear width, min", "value": 36, "unit": "in", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "Blueline default is 42" },
+    { "id": "R311.7.2-headroom", "code_ref": "IRC 2021 R311.7.2", "subject": "stair headroom, min", "value": 80, "unit": "in", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "6'-8\"" },
+    { "id": "R304.1-area", "code_ref": "IRC 2021 R304.1", "subject": "habitable room area, min", "value": 70, "unit": "sqft", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "" },
+    { "id": "R304.2-dim", "code_ref": "IRC 2021 R304.2", "subject": "habitable room horizontal dimension, min", "value": 84, "unit": "in", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "7 feet" },
+    { "id": "R305.1-ceiling", "code_ref": "IRC 2021 R305.1", "subject": "habitable ceiling height, min", "value": 84, "unit": "in", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "" },
+    { "id": "R311.6-hall", "code_ref": "IRC 2021 R311.6", "subject": "hallway clear width, min", "value": 36, "unit": "in", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "" },
+    { "id": "R310.2.1-egress-area", "code_ref": "IRC 2021 R310.2.1", "subject": "emergency escape opening net clear area, min (grade floor)", "value": 5.0, "unit": "sqft", "comparator": ">=", "severity": "error", "edition": "2021", "verified": false, "source": "", "note": "5.7 sqft above grade floor" }
+  ]
+}

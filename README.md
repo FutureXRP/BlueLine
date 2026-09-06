@@ -11,7 +11,7 @@ Or run the web app and use the describe box on the home page (`/`). With `ANTHRO
 
 A web platform that interviews a client about their custom home, lets them shape a validated floor plan in a guided editor, and generates a complete, dimensioned, IRC-prescriptive construction document set — buildable, unstamped — as a 24×36 PDF sheet set plus DXF.
 
-**[Build.md](./Build.md) is the build bible.** The Non-Negotiables in its §2 govern everything in this repo.
+**[BLUELINE_V2.md](./BLUELINE_V2.md) is the build bible** (v2 — module grammar, Bonsai pipeline; its §2 laws govern). Build.md is the superseded v1 spec, kept for history. v2 rebuild status: Phase 1, Session 1 complete (HouseModel core, wall derivation, stair math, farmhouse golden fixture). v1 code remains runnable while v2 phases replace it.
 
 ## Repository layout
 

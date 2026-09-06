@@ -16,7 +16,8 @@
     "./fixtures": "./src/fixtures/index.ts",
     "./pipeline": "./src/pipeline/index.ts",
     "./intake": "./src/intake/extract.ts",
-    "./takeoff": "./src/takeoff/index.ts"
+    "./takeoff": "./src/takeoff/index.ts",
+    "./house": "./src/house/index.ts"
   },
   "scripts": {
     "test": "vitest run",
