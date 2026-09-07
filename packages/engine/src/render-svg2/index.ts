@@ -19,7 +19,8 @@ export function renderLevelSvg(model: HouseModel, levelIndex: number, opts: { in
   const ink = opts.ink ?? '#23272B';
   const paper = opts.paper ?? '#F7F5EF';
   const level = model.levels.find((l) => l.index === levelIndex)!;
-  const rects = [...level.footprint, ...(levelIndex === 0 ? model.extras.map((e) => e.rect) : [])];
+  const extras = model.extras.filter((e) => (e.level ?? 0) === levelIndex);
+  const rects = [...level.footprint, ...extras.map((e) => e.rect)];
   const minX = Math.min(...rects.map((r) => r.x)) - 48;
   const minY = Math.min(...rects.map((r) => r.y)) - 48;
   const maxX = Math.max(...rects.map((r) => r.x + r.w)) + 48;
@@ -32,12 +33,10 @@ export function renderLevelSvg(model: HouseModel, levelIndex: number, opts: { in
   s.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${minX} ${minY} ${maxX - minX} ${maxY - minY + 30}" data-kind="blueline-v2-plan" style="background:${paper}">`);
   s.push(`<g transform="translate(0,${minY + maxY}) scale(1,-1)">`);
 
-  // porches (level 0)
-  if (levelIndex === 0) {
-    for (const e of model.extras) {
-      s.push(`<rect x="${e.rect.x}" y="${e.rect.y}" width="${e.rect.w}" height="${e.rect.h}" fill="${ink}" fill-opacity="0.05" stroke="${ink}" stroke-width="1.5" stroke-dasharray="10 6"/>`);
-      texts.push(`<text x="${e.rect.x + e.rect.w / 2}" y="${FY(e.rect.y + e.rect.h / 2) + 4}" text-anchor="middle" font-size="12" fill="${ink}" fill-opacity="0.6">${esc(e.name.toUpperCase())}</text>`);
-    }
+  // porches / decks on their own level
+  for (const e of extras) {
+    s.push(`<rect x="${e.rect.x}" y="${e.rect.y}" width="${e.rect.w}" height="${e.rect.h}" fill="${ink}" fill-opacity="0.05" stroke="${ink}" stroke-width="1.5" stroke-dasharray="10 6"/>`);
+    texts.push(`<text x="${e.rect.x + e.rect.w / 2}" y="${FY(e.rect.y + e.rect.h / 2) + 4}" text-anchor="middle" font-size="12" fill="${ink}" fill-opacity="0.6">${esc(e.name.toUpperCase())}</text>`);
   }
 
   // room labels

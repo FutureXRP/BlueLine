@@ -46,6 +46,8 @@ export interface HousePlanInput {
   stair?: Omit<StairInput, 'floorToFloorIn'>;
   /** grammar-issued requests resolved against derived walls after derivation */
   openingRequests?: OpeningRequest[];
+  /** as-built notes carried onto A-000 (scope flags, field conditions) */
+  annotations?: string[];
 }
 
 export function buildHouse(input: HousePlanInput): { model: HouseModel; findings: Finding[] } {
@@ -126,6 +128,7 @@ export function buildHouse(input: HousePlanInput): { model: HouseModel; findings
     bearing: input.bearingLines,
     areas,
     schedule,
+    ...(input.annotations?.length ? { annotations: input.annotations } : {}),
   };
 
   findings.push(...runChecks(model));

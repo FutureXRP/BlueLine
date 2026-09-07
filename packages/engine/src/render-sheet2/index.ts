@@ -147,7 +147,8 @@ interface Tr {
   s: number;
   ox: number;
   oy: number;
-  maxY: number; // model maxY for front-at-bottom flip
+  maxY: number;
+  minY: number; // front-at-bottom: model minY maps to the page bottom
 }
 
 function fitPlan(rects: Array<{ x: number; y: number; w: number; h: number }>, pad: number): Tr {
@@ -163,29 +164,30 @@ function fitPlan(rects: Array<{ x: number; y: number; w: number; h: number }>, p
     ox: MARGIN + 80 + (availW - (maxX - minX) * s) / 2 - minX * s,
     oy: MARGIN + 90 + (availH - (maxY - minY) * s) / 2,
     maxY,
+    minY,
   };
 }
 
 function px(tr: Tr, x: number): number { return tr.ox + x * tr.s; }
-function py(tr: Tr, y: number): number { return tr.oy + (tr.maxY - y) * tr.s; } // flip: front (y=0) at bottom
+// front (y=0) at bottom (§6): PDF y grows up, so model y maps up directly
+function py(tr: Tr, y: number): number { return tr.oy + (y - tr.minY) * tr.s; }
 
 function line(page: PDFPage, tr: Tr, x1: number, y1: number, x2: number, y2: number, w: number, dash?: number[]): void {
   page.drawLine({ start: { x: px(tr, x1), y: py(tr, y1) }, end: { x: px(tr, x2), y: py(tr, y2) }, thickness: w, color: INK, ...(dash ? { dashArray: dash } : {}) });
 }
 
 function planSheet(page: PDFPage, model: HouseModel, level: LevelModel, fonts: Fonts): void {
-  const rects = [...level.footprint, ...(level.index === 0 ? model.extras.map((e) => e.rect) : [])];
+  const levelExtras = model.extras.filter((e) => (e.level ?? 0) === level.index);
+  const rects = [...level.footprint, ...levelExtras.map((e) => e.rect)];
   const tr = fitPlan(rects, 96);
 
-  if (level.index === 0) {
-    for (const e of model.extras) {
-      page.drawRectangle({
-        x: px(tr, e.rect.x), y: py(tr, e.rect.y + e.rect.h),
-        width: e.rect.w * tr.s, height: e.rect.h * tr.s,
-        borderColor: INK, borderWidth: 0.7, borderDashArray: [6, 4],
-      });
-      page.drawText(winAnsi(e.name.toUpperCase()), { x: px(tr, e.rect.x + e.rect.w / 2) - 24, y: py(tr, e.rect.y + e.rect.h / 2), size: 7, font: fonts.body, color: INK });
-    }
+  for (const e of levelExtras) {
+    page.drawRectangle({
+      x: px(tr, e.rect.x), y: py(tr, e.rect.y),
+      width: e.rect.w * tr.s, height: e.rect.h * tr.s,
+      borderColor: INK, borderWidth: 0.7, borderDashArray: [6, 4],
+    });
+    page.drawText(winAnsi(e.name.toUpperCase()), { x: px(tr, e.rect.x + e.rect.w / 2) - 24, y: py(tr, e.rect.y + e.rect.h / 2), size: 7, font: fonts.body, color: INK });
   }
 
   for (const w of level.walls) {
@@ -201,7 +203,7 @@ function planSheet(page: PDFPage, model: HouseModel, level: LevelModel, fonts: F
       if (horizontal) {
         page.drawRectangle({ x: px(tr, w.x1 + seg.a), y: py(tr, w.y1) - t / 2, width: (seg.b - seg.a) * tr.s, height: t, color: INK });
       } else {
-        page.drawRectangle({ x: px(tr, w.x1) - t / 2, y: py(tr, w.y1 + seg.b), width: t, height: (seg.b - seg.a) * tr.s, color: INK });
+        page.drawRectangle({ x: px(tr, w.x1) - t / 2, y: py(tr, w.y1 + seg.a), width: t, height: (seg.b - seg.a) * tr.s, color: INK });
       }
     }
     for (const o of level.openings.filter((o) => o.wallId === w.id)) drawOpeningPdf(page, tr, w, o);
@@ -243,7 +245,7 @@ function planSheet(page: PDFPage, model: HouseModel, level: LevelModel, fonts: F
     if (vertical) page.drawText(label, { x: x1 - 8, y: (y1 + y2) / 2 - lw / 2, size: 7, font: fonts.mono, color: INK, rotate: { type: 'degrees', angle: 90 } as never });
     else page.drawText(label, { x: (x1 + x2) / 2 - lw / 2, y: y1 + 4, size: 7, font: fonts.mono, color: INK });
   };
-  const dimY = py(tr, minY) + 40; // below plan (front at bottom)
+  const dimY = py(tr, minY) - 40; // below plan (front at bottom)
   dim(px(tr, minX), dimY, px(tr, maxX), dimY, fmt(maxX - minX));
   const dimX = px(tr, minX) - 40;
   dim(dimX, py(tr, minY), dimX, py(tr, maxYfp), fmt(maxYfp - minY), true);
@@ -251,11 +253,11 @@ function planSheet(page: PDFPage, model: HouseModel, level: LevelModel, fonts: F
   const breaks = [...new Set(level.walls.filter((w) => w.x1 === w.x2 && !w.exterior).map((w) => w.x1))].sort((a, b) => a - b);
   const tier2 = [minX, ...breaks.filter((b) => b > minX && b < maxX), maxX];
   for (let i = 1; i < tier2.length; i++) {
-    dim(px(tr, tier2[i - 1]!), dimY + 18, px(tr, tier2[i]!), dimY + 18, fmt(tier2[i]! - tier2[i - 1]!));
+    dim(px(tr, tier2[i - 1]!), dimY - 18, px(tr, tier2[i]!), dimY - 18, fmt(tier2[i]! - tier2[i - 1]!));
   }
 
   const cap = 'FRONT';
-  page.drawText(cap, { x: px(tr, (minX + maxX) / 2) - 14, y: py(tr, minY) + 64, size: 8, font: fonts.body, color: INK });
+  page.drawText(cap, { x: px(tr, (minX + maxX) / 2) - 14, y: py(tr, minY) - 64, size: 8, font: fonts.body, color: INK });
 }
 
 function drawOpeningPdf(page: PDFPage, tr: Tr, w: Wall, o: Opening): void {
@@ -269,7 +271,7 @@ function drawOpeningPdf(page: PDFPage, tr: Tr, w: Wall, o: Opening): void {
       page.drawRectangle({ x: px(tr, cx - a), y: py(tr, cy) - (t * tr.s) / 2, width: o.width * tr.s, height: t * tr.s, borderColor: INK, borderWidth: 0.7 });
       line(page, tr, cx - a, cy, cx + a, cy, 0.4);
     } else {
-      page.drawRectangle({ x: px(tr, cx) - (t * tr.s) / 2, y: py(tr, cy + a), width: t * tr.s, height: o.width * tr.s, borderColor: INK, borderWidth: 0.7 });
+      page.drawRectangle({ x: px(tr, cx) - (t * tr.s) / 2, y: py(tr, cy - a), width: t * tr.s, height: o.width * tr.s, borderColor: INK, borderWidth: 0.7 });
       line(page, tr, cx, cy - a, cx, cy + a, 0.4);
     }
   } else if (o.type === 'garageDoor' || o.type === 'slider' || o.type === 'cased') {
@@ -487,7 +489,11 @@ function scheduleSheet(page: PDFPage, model: HouseModel, fonts: Fonts): void {
   page.drawText('ROOM SCHEDULE', { x: x0, y, size: 11, font: fonts.bold, color: INK });
   y -= 16;
   for (const r of model.schedule) {
+    const level = model.levels.find((l) => l.index === r.level);
+    const room = level?.rooms.find((x2) => x2.id === r.roomId);
+    const clg = room?.ceilingIn ?? level?.floorToCeilingIn;
     col(x0, `L${r.level}`); col(x0 + 30, r.name.slice(0, 24)); col(x0 + 190, r.type); col(x0 + 260, `${Math.round(r.areaSqIn / 144)} SF`);
+    if (clg !== undefined) col(x0 + 320, `CLG ${clg}"`);
     y -= 10;
   }
   y -= 14;
@@ -552,6 +558,11 @@ function cover(page: PDFPage, model: HouseModel, findings: Finding[], fonts: Fon
   const unverified = [...rows.values()].filter((r) => !r.verified).length;
   rowt(`${rows.size} RULE ROWS LOADED - ${unverified} UNVERIFIED (BLOCKS LAUNCH, NOT DEVELOPMENT).`, unverified > 0);
   if (unverified > 0) rowt('VALUES FROM UNVERIFIED ROWS ARE REPRESENTATIVE. VERIFY WITH LOCAL CODE OFFICIAL.');
+  if (model.annotations?.length) {
+    y -= 12;
+    section('AS-BUILT NOTES');
+    for (const note of model.annotations.slice(0, 12)) rowt(winAnsi(note.toUpperCase()).slice(0, 92));
+  }
 
   // right column: findings (never softened)
   const fx = x0 + 520;

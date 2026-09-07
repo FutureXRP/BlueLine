@@ -56,6 +56,9 @@ export interface Room {
   name: string;
   type: RoomType;
   rect: Rect;
+  /** as-built override of the level's floor-to-ceiling (vaults, dropped or
+   *  raised ceilings); when absent the level value applies */
+  ceilingIn?: Inches;
 }
 
 /** Derived wall segment. `roomIds` = rooms whose edge produced it (1 = at
@@ -182,13 +185,15 @@ export interface Finding {
   refs: { level?: number; roomIds?: string[]; wallIds?: string[] };
 }
 
-/** Open structures attached to level 0 but outside the conditioned footprint
- *  (bible §6 "extras"): porches, stoops. Drawn light, never tiled. */
+/** Open structures attached to a level but outside the conditioned footprint
+ *  (bible §6 "extras"): porches, stoops, upper-level decks. Drawn light,
+ *  never tiled. `level` defaults to 0. */
 export interface Extra {
   id: string;
   name: string;
-  kind: 'porchFront' | 'porchRear' | 'stoop';
+  kind: 'porchFront' | 'porchRear' | 'stoop' | 'deck';
   rect: Rect;
+  level?: number;
 }
 
 export interface HouseModel {
@@ -201,6 +206,8 @@ export interface HouseModel {
   bearing: BearingLine[];
   areas: Areas;
   schedule: ScheduleRow[];
+  /** as-built notes carried onto A-000 (scope flags, field conditions) */
+  annotations?: string[];
 }
 
 export function rectArea(r: Rect): number {

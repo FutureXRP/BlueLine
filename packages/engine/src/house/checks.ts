@@ -62,9 +62,19 @@ function checkHalls(model: HouseModel, rows: Map<string, RuleRow>): Finding[] {
 
 function checkCeilings(model: HouseModel, rows: Map<string, RuleRow>): Finding[] {
   const ceil = requireRow(rows, 'R305.1-ceiling');
-  return model.levels
+  const out: Finding[] = model.levels
     .filter((l) => l.floorToCeilingIn < ceil.value)
     .map((l) => ruleFinding(ceil, `${l.name} ceiling ${l.floorToCeilingIn}" is below the ${ceil.value}" habitable minimum (${ceil.code_ref}).`, { level: l.index }));
+  // per-room as-built overrides checked individually (habitable rooms only)
+  for (const level of model.levels) {
+    for (const r of level.rooms) {
+      if (r.ceilingIn === undefined || !HABITABLE.has(r.type)) continue;
+      if (r.ceilingIn < ceil.value) {
+        out.push(ruleFinding(ceil, `${r.name} ceiling ${r.ceilingIn}" is below the ${ceil.value}" habitable minimum (${ceil.code_ref}).`, { level: level.index, roomIds: [r.id] }));
+      }
+    }
+  }
+  return out;
 }
 
 /** Net clear egress proxy, same derating as v1 (sash consumes rough opening). */
