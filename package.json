@@ -7,5 +7,8 @@
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck"
   },
-  "packageManager": "pnpm@10.34.5"
+  "packageManager": "pnpm@10.34.5",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
 }
