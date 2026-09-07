@@ -12,11 +12,14 @@
     "@blueline/engine": "workspace:*",
     "next": "^14.2.15",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "three": "^0.168.0",
+    "@blueline/grammar": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "@types/three": "^0.168.0"
   }
 }

@@ -4,3 +4,7 @@ export * from './stairs.js';
 export * from './rules.js';
 export * from './build.js';
 export * from './hash.js';
+export * from './openings.js';
+export * from './checks.js';
+export * from './roofgeom.js';
+export * from './manifest.js';

@@ -1,0 +1,9 @@
+{
+  "note": "Golden model hashes for the three plan-type program fixtures (deterministic designer briefs in packages/grammar/test). Changing a hash requires a reviewed golden update.",
+  "engineVersion": "2.0.0-s3",
+  "hashes": {
+    "farmhouse": "dc3c8209",
+    "ranch": "b5850ad8",
+    "compact": "a7b649fd"
+  }
+}

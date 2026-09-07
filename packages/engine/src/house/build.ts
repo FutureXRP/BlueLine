@@ -24,6 +24,9 @@ import {
 import { checkTiling, deriveWalls } from './walls.js';
 import { computeStair, type StairInput } from './stairs.js';
 import { stairRules } from './rules.js';
+import { checkOpenings, resetOpeningIds, resolveOpening, type OpeningRequest } from './openings.js';
+import { runChecks } from './checks.js';
+import type { Extra } from './types.js';
 
 export interface LevelPlan {
   index: number;
@@ -39,7 +42,10 @@ export interface HousePlanInput {
   levels: LevelPlan[];
   roof: RoofSpec;
   bearingLines: BearingLine[];
+  extras?: Extra[];
   stair?: Omit<StairInput, 'floorToFloorIn'>;
+  /** grammar-issued requests resolved against derived walls after derivation */
+  openingRequests?: OpeningRequest[];
 }
 
 export function buildHouse(input: HousePlanInput): { model: HouseModel; findings: Finding[] } {
@@ -68,6 +74,18 @@ export function buildHouse(input: HousePlanInput): { model: HouseModel; findings
       walls: derived.walls,
       openings: plan.openings ?? [],
     });
+  }
+
+  // resolve grammar opening requests against the derived walls
+  resetOpeningIds();
+  for (const req of input.openingRequests ?? []) {
+    const level = levels.find((l) => l.index === req.level);
+    if (!level) continue;
+    const f = resolveOpening(level, req);
+    if (f) findings.push(f);
+  }
+  for (const level of levels) {
+    findings.push(...checkOpenings(level, level.floorToCeilingIn));
   }
 
   let stair: HouseModel['stair'] = null;
@@ -102,12 +120,15 @@ export function buildHouse(input: HousePlanInput): { model: HouseModel; findings
     modelVersion: 2,
     spec: input.spec,
     levels,
+    extras: input.extras ?? [],
     stair,
     roof: input.roof,
     bearing: input.bearingLines,
     areas,
     schedule,
   };
+
+  findings.push(...runChecks(model));
 
   // §11 area invariant: schedule totals equal geometry totals
   const schedTotal = schedule

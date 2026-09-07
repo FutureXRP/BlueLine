@@ -73,7 +73,7 @@ export interface Wall {
   roomIds: string[];
 }
 
-export type OpeningType = 'door' | 'window' | 'garageDoor' | 'cased';
+export type OpeningType = 'door' | 'window' | 'garageDoor' | 'cased' | 'slider';
 export type Swing = 'inLeft' | 'inRight' | 'outLeft' | 'outRight' | 'none';
 
 export interface Opening {
@@ -182,10 +182,20 @@ export interface Finding {
   refs: { level?: number; roomIds?: string[]; wallIds?: string[] };
 }
 
+/** Open structures attached to level 0 but outside the conditioned footprint
+ *  (bible §6 "extras"): porches, stoops. Drawn light, never tiled. */
+export interface Extra {
+  id: string;
+  name: string;
+  kind: 'porchFront' | 'porchRear' | 'stoop';
+  rect: Rect;
+}
+
 export interface HouseModel {
   modelVersion: 2;
   spec: HouseSpec;
   levels: LevelModel[];
+  extras: Extra[];
   stair: Stair | null;
   roof: RoofSpec;
   bearing: BearingLine[];

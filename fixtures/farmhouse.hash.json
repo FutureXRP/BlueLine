@@ -1,8 +1,8 @@
 {
   "fixture": "farmhouse_two_story",
   "source": "packages/engine/src/fixtures/farmhouseV2.ts",
-  "engineVersion": "2.0.0-s1",
+  "engineVersion": "2.0.0-s2",
   "seed": 1,
-  "modelHash": "797c6fa6",
-  "note": "FNV-1a 32 over key-sorted HouseModel JSON. Changing this hash requires a reviewed golden update (BLUELINE_V2.md §11)."
+  "modelHash": "4ac4d381",
+  "note": "FNV-1a 32 over key-sorted HouseModel JSON. Updated S02: fixture gained openings + porches; circulation check exposed an unenterable primary suite in the S01 layout, right wing re-tiled."
 }

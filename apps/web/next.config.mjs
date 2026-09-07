@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@blueline/engine'],
+  transpilePackages: ['@blueline/engine', '@blueline/grammar'],
   webpack: (config) => {
     // engine uses NodeNext-style ".js" specifiers in TS source
     config.resolve.extensionAlias = {

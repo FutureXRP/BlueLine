@@ -93,8 +93,16 @@ export default function Home() {
         in minutes, not weeks.
       </p>
 
+      <div className="titleblock" style={{ marginTop: 20, borderColor: 'var(--blueline)' }}>
+        <h2 style={{ color: 'var(--blueline-deep)' }}>New: Blueline v2</h2>
+        <p style={{ fontSize: 14, margin: '4px 0 10px' }}>
+          The v2 designer composes houses from a validated module grammar — two-story plans,
+          elevations, 3D, stair sections. <a href="/design">Open the v2 designer →</a>
+        </p>
+      </div>
+
       <div className="titleblock" style={{ marginTop: 20 }}>
-        <h2>Describe your home</h2>
+        <h2>Describe your home (v1)</h2>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}

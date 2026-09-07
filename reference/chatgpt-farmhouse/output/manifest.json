@@ -1,0 +1,131 @@
+{
+  "checks": [
+    [
+      "PASS",
+      "Unique IDs in rooms"
+    ],
+    [
+      "PASS",
+      "Unique IDs in walls"
+    ],
+    [
+      "PASS",
+      "Unique IDs in openings"
+    ],
+    [
+      "PASS",
+      "All walls are nonzero, axis-aligned segments"
+    ],
+    [
+      "PASS",
+      "All room rectangles have positive area"
+    ],
+    [
+      "PASS",
+      "No positive-area room rectangle overlaps"
+    ],
+    [
+      "PASS",
+      "All conditioned room rectangles are within their story footprints"
+    ],
+    [
+      "PASS",
+      "Program contains exactly 4 bedrooms (found 4)"
+    ],
+    [
+      "PASS",
+      "Program contains exactly 4 full-bath rooms (found 4)"
+    ],
+    [
+      "PASS",
+      "Program contains exactly 1 theater (found 1)"
+    ],
+    [
+      "PASS",
+      "All openings fit their host walls and story heights"
+    ],
+    [
+      "PASS",
+      "No openings overlap on the same wall"
+    ],
+    [
+      "PASS",
+      "Second-floor footprint is fully supported within main first-floor footprint"
+    ],
+    [
+      "PASS",
+      "Second-floor stair/landing footprint is vertically aligned inside first-floor stair core"
+    ],
+    [
+      "PASS",
+      "Circulation graph connects front entry to all principal rooms"
+    ],
+    [
+      "PASS",
+      "Circulation graph connects garage to kitchen/living/primary suite"
+    ],
+    [
+      "PASS",
+      "No windows open from the house into the attached garage zone"
+    ]
+  ],
+  "files": [
+    {
+      "bytes": 46343,
+      "file": "A1.1_first_floor.png",
+      "sha256": "3f6b5bf2da263e9a79763ea83a46c5da756a7f925a832df3ca59504d4a3d8a15"
+    },
+    {
+      "bytes": 14746,
+      "file": "A1.1_first_floor.svg",
+      "sha256": "2ec52e2a5572858f48445ea590ad7ea5299db066969ebb18b6ce0efeea18ba3d"
+    },
+    {
+      "bytes": 52090,
+      "file": "A1.2_second_floor.png",
+      "sha256": "98a83c10afeae295204db49297f75ff89e8f53ecb95a22f64f5f2cba820ab39d"
+    },
+    {
+      "bytes": 7363,
+      "file": "A1.2_second_floor.svg",
+      "sha256": "259750911bc136e1759713d75d42b6847d58f2b7f20fa9db112832f75ede5c39"
+    },
+    {
+      "bytes": 9502,
+      "file": "farmhouse.dxf",
+      "sha256": "ce250468e44424e2a902ae8b20dc8e86695ce3bc0005b3c5ec45cac381642026"
+    },
+    {
+      "bytes": 32180,
+      "file": "farmhouse_mass_model.glb",
+      "sha256": "41b1a3ffedd5c91512b44de14031832bf3eb4b110fffad27e8d5d10ab31202da"
+    },
+    {
+      "bytes": 50497,
+      "file": "farmhouse_mass_model.obj",
+      "sha256": "977b7f15e9ce428fb6af129280867af67dcec0b293f56e49e43d4c9844c3cd4c"
+    },
+    {
+      "bytes": 21793,
+      "file": "normalized_model.json",
+      "sha256": "c460b0b40f3d3386add09ae3110ff6c9ff1eecad9f6070743cefc88be2bde6e7"
+    },
+    {
+      "bytes": 2697,
+      "file": "opening_schedule.csv",
+      "sha256": "772d688f7f389ad3d0a2d6b89913fa3a6c9109ccbf11703fc3276a4f9c4e64d0"
+    },
+    {
+      "bytes": 1626,
+      "file": "room_schedule.csv",
+      "sha256": "a61977d26132a4a805e268e2953385f42e570abf7b255ff1c60621828ac54ae0"
+    },
+    {
+      "bytes": 1190,
+      "file": "validation_report.txt",
+      "sha256": "d1781326f965fb0871624bcffb82c789f20e96bb9f01602ff40ffc16b0e79b05"
+    }
+  ],
+  "geometry_version": "1.0.0",
+  "validation": "PASS"
+}

@@ -1,0 +1,24 @@
+REPRODUCIBLE FARMHOUSE VALIDATION REPORT
+Geometry version: 1.0.0
+Source resolution: 1/8 inch integer ticks
+
+[PASS] Unique IDs in rooms
+[PASS] Unique IDs in walls
+[PASS] Unique IDs in openings
+[PASS] All walls are nonzero, axis-aligned segments
+[PASS] All room rectangles have positive area
+[PASS] No positive-area room rectangle overlaps
+[PASS] All conditioned room rectangles are within their story footprints
+[PASS] Program contains exactly 4 bedrooms (found 4)
+[PASS] Program contains exactly 4 full-bath rooms (found 4)
+[PASS] Program contains exactly 1 theater (found 1)
+[PASS] All openings fit their host walls and story heights
+[PASS] No openings overlap on the same wall
+[PASS] Second-floor footprint is fully supported within main first-floor footprint
+[PASS] Second-floor stair/landing footprint is vertically aligned inside first-floor stair core
+[PASS] Circulation graph connects front entry to all principal rooms
+[PASS] Circulation graph connects garage to kitchen/living/primary suite
+[PASS] No windows open from the house into the attached garage zone
+
+RESULT: PASS
+This validates internal encoded geometry, not jurisdiction-specific building-code or structural compliance.

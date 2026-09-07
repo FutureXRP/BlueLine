@@ -1,0 +1,6 @@
+PyYAML==6.0.3
+ezdxf==1.4.4
+trimesh==4.11.1
+shapely==2.1.2
+# Optional BIM/IFC export when installed in the target environment:
+# ifcopenshell>=0.8.0

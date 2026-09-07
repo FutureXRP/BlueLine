@@ -17,7 +17,9 @@
     "./pipeline": "./src/pipeline/index.ts",
     "./intake": "./src/intake/extract.ts",
     "./takeoff": "./src/takeoff/index.ts",
-    "./house": "./src/house/index.ts"
+    "./house": "./src/house/index.ts",
+    "./render-svg2": "./src/render-svg2/index.ts",
+    "./render-sheet2": "./src/render-sheet2/index.ts"
   },
   "scripts": {
     "test": "vitest run",

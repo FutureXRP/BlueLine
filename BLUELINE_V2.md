@@ -309,7 +309,7 @@ Vellum & Blueline, unchanged from v1: vellum `#F7F5EF`, graphite `#23272B`, work
 
 ## 12. Phase plan with the 0–100 score
 
-Score = production readiness where 100 means a client can pay and a framer can build from the set. Current mock: **8**.
+Score = production readiness where 100 means a client can pay and a framer can build from the set. Current mock: **8**. **Current build: 30** (2026-09-07: Phases 1–2 closed — grammar with 3 plan types/3 styles/module self-checks, designer loop with deterministic fallback, engine invariants, reference-adopted checks. An INTERIM pdf-lib sheet set, SVG elevations, and a Three.js viewer exist but score no Phase 3–6 credit: the Bonsai/IFC pipeline, render service, verified rules, and shell remain open. /mock was never committed; the engine was built from §6 directly.)
 
 | Phase | Sessions | Deliverable | Score after |
 |---|---|---|---|

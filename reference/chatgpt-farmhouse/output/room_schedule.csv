@@ -1,0 +1,30 @@
+ID,Story,Type,Name,Nominal Width,Nominal Depth,Nominal Area sf
+RM101,F1,theater,Theater,"18'-0""","12'-0""",216.00
+RM102,F1,foyer,Foyer,"10'-0""","10'-0""",100.00
+RM103,F1,stair,Stair,"10'-0""","14'-0""",140.00
+RM104,F1,bedroom,Bedroom 2,"14'-0""","12'-0""",168.00
+RM105,F1,bathroom,Bath 2,"6'-0""","8'-0""",48.00
+RM106,F1,hall,Guest Hall,"6'-0""","4'-0""",24.00
+RM107,F1,bedroom,Primary Bedroom,"18'-0""","16'-0""",288.00
+RM108,F1,hall,Primary Suite Hall,"6'-0""","16'-0""",96.00
+RM109,F1,closet,Primary WIC,"6'-0""","7'-0""",42.00
+RM110,F1,bathroom,Primary Bath,"6'-0""","9'-0""",54.00
+RM111,F1,hall,Central Hall,"8'-0""","14'-0""",112.00
+RM112,F1,pantry,Pantry,"6'-0""","8'-0""",48.00
+RM113,F1,laundry,Mud / Laundry,"12'-0""","8'-0""",96.00
+RM114,F1,hall,Service Hall,"12'-0""","8'-0""",96.00
+RM115,F1,kitchen,Kitchen,"28'-0""","10'-0""",280.00
+RM116,F1,living,Living,"16'-0""","14'-0""",224.00
+RM117,F1,dining,Dining,"14'-0""","14'-0""",196.00
+RM118,F1,storage,Mechanical / Storage,"10'-0""","8'-0""",80.00
+RM119,F1,hall,Connector Hall,"4'-0""","10'-0""",40.00
+RM201,F2,bedroom,Bedroom 3,"14'-0""","12'-0""",168.00
+RM202,F2,bathroom,Bath 3,"8'-0""","8'-0""",64.00
+RM203,F2,stair,Stair / Landing,"10'-0""","12'-0""",120.00
+RM204,F2,loft,Loft,"10'-0""","12'-0""",120.00
+RM205,F2,hall,Upper Hall,"36'-0""","4'-0""",144.00
+RM206,F2,loft,Reading Nook,"8'-0""","12'-0""",96.00
+RM207,F2,bedroom,Bedroom 4,"14'-0""","12'-0""",168.00
+RM208,F2,bathroom,Bath 4,"8'-0""","8'-0""",64.00
+RM209,F2,storage,Linen / Storage L,"8'-0""","4'-0""",32.00
+RM210,F2,storage,Linen / Storage R,"8'-0""","4'-0""",32.00

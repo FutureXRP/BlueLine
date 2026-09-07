@@ -1,0 +1,183 @@
+project:
+  id: FARMHOUSE-001
+  name: Reproducible Two-Story Farmhouse
+  geometry_version: 1.0.0
+  unit_resolution: 1/8 inch
+  coordinate_convention: "Origin is southwest outside corner of main first-floor footprint; +X east, +Y north, +Z up. Exterior footprint dimensions are reference-face dimensions."
+
+standards:
+  exterior_wall_thickness: '6 1/2"'
+  interior_wall_thickness: '4 1/2"'
+  first_floor_wall_height: "10'"
+  second_floor_wall_height: "9'"
+  floor_system_depth: '16"'
+  second_floor_elevation: "11' 4\""
+  door_height: "6' 8\""
+  window_head_height: "8'"
+
+footprints:
+  first_floor_main: {x1: "0'", y1: "0'", x2: "60'", y2: "40'"}
+  garage: {x1: "60'", y1: "0'", x2: "92'", y2: "30'"}
+  front_porch: {x1: "8'", y1: "-8'", x2: "52'", y2: "0'"}
+  rear_porch: {x1: "24'", y1: "40'", x2: "60'", y2: "52'"}
+  second_floor: {x1: "20'", y1: "0'", x2: "56'", y2: "28'"}
+
+stories:
+  - id: F1
+    name: First Floor
+    elevation: "0'"
+    height: "10'"
+  - id: F2
+    name: Second Floor
+    elevation: "11' 4\""
+    height: "9'"
+
+rooms:
+  # Bounds are nominal planning rectangles on the reference grid. Clear finished dimensions
+  # are computed separately after wall-face offsets are finalized.
+  - {id: RM101, story: F1, type: theater, name: Theater, x1: "0'", y1: "0'", x2: "18'", y2: "12'"}
+  - {id: RM102, story: F1, type: foyer, name: Foyer, x1: "18'", y1: "0'", x2: "28'", y2: "10'"}
+  - {id: RM103, story: F1, type: stair, name: Stair, x1: "28'", y1: "0'", x2: "38'", y2: "14'"}
+  - {id: RM104, story: F1, type: bedroom, name: Bedroom 2, x1: "0'", y1: "12'", x2: "14'", y2: "24'"}
+  - {id: RM105, story: F1, type: bathroom, name: Bath 2, x1: "14'", y1: "12'", x2: "20'", y2: "20'"}
+  - {id: RM106, story: F1, type: hall, name: Guest Hall, x1: "14'", y1: "20'", x2: "20'", y2: "24'"}
+  - {id: RM107, story: F1, type: bedroom, name: Primary Bedroom, x1: "0'", y1: "24'", x2: "18'", y2: "40'"}
+  - {id: RM108, story: F1, type: hall, name: Primary Suite Hall, x1: "18'", y1: "24'", x2: "24'", y2: "40'"}
+  - {id: RM109, story: F1, type: closet, name: Primary WIC, x1: "24'", y1: "24'", x2: "30'", y2: "31'"}
+  - {id: RM110, story: F1, type: bathroom, name: Primary Bath, x1: "24'", y1: "31'", x2: "30'", y2: "40'"}
+  - {id: RM111, story: F1, type: hall, name: Central Hall, x1: "20'", y1: "10'", x2: "28'", y2: "24'"}
+  - {id: RM112, story: F1, type: pantry, name: Pantry, x1: "42'", y1: "8'", x2: "48'", y2: "16'"}
+  - {id: RM113, story: F1, type: laundry, name: Mud / Laundry, x1: "48'", y1: "0'", x2: "60'", y2: "8'"}
+  - {id: RM114, story: F1, type: hall, name: Service Hall, x1: "48'", y1: "8'", x2: "60'", y2: "16'"}
+  - {id: RM115, story: F1, type: kitchen, name: Kitchen, x1: "32'", y1: "16'", x2: "60'", y2: "26'"}
+  - {id: RM116, story: F1, type: living, name: Living, x1: "30'", y1: "26'", x2: "46'", y2: "40'"}
+  - {id: RM117, story: F1, type: dining, name: Dining, x1: "46'", y1: "26'", x2: "60'", y2: "40'"}
+
+  - {id: RM118, story: F1, type: storage, name: Mechanical / Storage, x1: "38'", y1: "0'", x2: "48'", y2: "8'"}
+  - {id: RM119, story: F1, type: hall, name: Connector Hall, x1: "28'", y1: "14'", x2: "32'", y2: "24'"}
+
+  - {id: RM201, story: F2, type: bedroom, name: Bedroom 3, x1: "20'", y1: "16'", x2: "34'", y2: "28'"}
+  - {id: RM202, story: F2, type: bathroom, name: Bath 3, x1: "20'", y1: "4'", x2: "28'", y2: "12'"}
+  - {id: RM203, story: F2, type: stair, name: Stair / Landing, x1: "28'", y1: "0'", x2: "38'", y2: "12'"}
+  - {id: RM204, story: F2, type: loft, name: Loft, x1: "38'", y1: "0'", x2: "48'", y2: "12'"}
+  - {id: RM205, story: F2, type: hall, name: Upper Hall, x1: "20'", y1: "12'", x2: "56'", y2: "16'"}
+  - {id: RM206, story: F2, type: loft, name: Reading Nook, x1: "34'", y1: "16'", x2: "42'", y2: "28'"}
+  - {id: RM207, story: F2, type: bedroom, name: Bedroom 4, x1: "42'", y1: "16'", x2: "56'", y2: "28'"}
+  - {id: RM208, story: F2, type: bathroom, name: Bath 4, x1: "48'", y1: "4'", x2: "56'", y2: "12'"}
+  - {id: RM209, story: F2, type: storage, name: Linen / Storage L, x1: "20'", y1: "0'", x2: "28'", y2: "4'"}
+  - {id: RM210, story: F2, type: storage, name: Linen / Storage R, x1: "48'", y1: "0'", x2: "56'", y2: "4'"}
+
+walls:
+  # Exterior first floor main: reference line at outside face. Thickness grows inward for 2D documentation.
+  - {id: W101, story: F1, kind: exterior, x1: "0'", y1: "0'", x2: "60'", y2: "0'"}
+  - {id: W102, story: F1, kind: exterior, x1: "60'", y1: "0'", x2: "60'", y2: "40'"}
+  - {id: W103, story: F1, kind: exterior, x1: "60'", y1: "40'", x2: "0'", y2: "40'"}
+  - {id: W104, story: F1, kind: exterior, x1: "0'", y1: "40'", x2: "0'", y2: "0'"}
+  # Garage exterior; west wall is shared/attachment interface and is not duplicated as an exterior wall.
+  - {id: W105, story: F1, kind: exterior, x1: "60'", y1: "0'", x2: "92'", y2: "0'"}
+  - {id: W106, story: F1, kind: exterior, x1: "92'", y1: "0'", x2: "92'", y2: "30'"}
+  - {id: W107, story: F1, kind: exterior, x1: "92'", y1: "30'", x2: "60'", y2: "30'"}
+  # First floor partitions
+  - {id: W111, story: F1, kind: interior, x1: "18'", y1: "0'", x2: "18'", y2: "12'"}
+  - {id: W112, story: F1, kind: interior, x1: "0'", y1: "12'", x2: "18'", y2: "12'"}
+  - {id: W113, story: F1, kind: interior, x1: "0'", y1: "24'", x2: "30'", y2: "24'"}
+  - {id: W114, story: F1, kind: interior, x1: "14'", y1: "12'", x2: "14'", y2: "24'"}
+  - {id: W115, story: F1, kind: interior, x1: "20'", y1: "12'", x2: "20'", y2: "24'"}
+  - {id: W116, story: F1, kind: interior, x1: "14'", y1: "20'", x2: "20'", y2: "20'"}
+  - {id: W117, story: F1, kind: interior, x1: "18'", y1: "24'", x2: "18'", y2: "40'"}
+  - {id: W118, story: F1, kind: interior, x1: "24'", y1: "24'", x2: "24'", y2: "40'"}
+  - {id: W119, story: F1, kind: interior, x1: "24'", y1: "31'", x2: "30'", y2: "31'"}
+  - {id: W120, story: F1, kind: interior, x1: "28'", y1: "0'", x2: "28'", y2: "14'"}
+  - {id: W121, story: F1, kind: interior, x1: "38'", y1: "0'", x2: "38'", y2: "14'"}
+  - {id: W122, story: F1, kind: interior, x1: "28'", y1: "14'", x2: "38'", y2: "14'"}
+  - {id: W123, story: F1, kind: interior, x1: "42'", y1: "8'", x2: "48'", y2: "8'"}
+  - {id: W124, story: F1, kind: interior, x1: "42'", y1: "8'", x2: "42'", y2: "16'"}
+  - {id: W125, story: F1, kind: interior, x1: "48'", y1: "8'", x2: "48'", y2: "16'"}
+  - {id: W126, story: F1, kind: interior, x1: "42'", y1: "16'", x2: "48'", y2: "16'"}
+  - {id: W127, story: F1, kind: interior, x1: "48'", y1: "8'", x2: "60'", y2: "8'"}
+  - {id: W128, story: F1, kind: interior, x1: "48'", y1: "0'", x2: "48'", y2: "8'"}
+  - {id: W131, story: F1, kind: interior, x1: "38'", y1: "8'", x2: "42'", y2: "8'"}
+  - {id: W129, story: F1, kind: interior, x1: "36'", y1: "16'", x2: "42'", y2: "16'"}
+  - {id: W130, story: F1, kind: interior, x1: "48'", y1: "16'", x2: "54'", y2: "16'"}
+
+  # Second floor perimeter
+  - {id: W201, story: F2, kind: exterior, x1: "20'", y1: "0'", x2: "56'", y2: "0'"}
+  - {id: W202, story: F2, kind: exterior, x1: "56'", y1: "0'", x2: "56'", y2: "28'"}
+  - {id: W203, story: F2, kind: exterior, x1: "56'", y1: "28'", x2: "20'", y2: "28'"}
+  - {id: W204, story: F2, kind: exterior, x1: "20'", y1: "28'", x2: "20'", y2: "0'"}
+  # Second floor partitions
+  - {id: W211, story: F2, kind: interior, x1: "20'", y1: "16'", x2: "56'", y2: "16'"}
+  - {id: W212, story: F2, kind: interior, x1: "34'", y1: "16'", x2: "34'", y2: "28'"}
+  - {id: W213, story: F2, kind: interior, x1: "42'", y1: "16'", x2: "42'", y2: "28'"}
+  - {id: W214, story: F2, kind: interior, x1: "20'", y1: "12'", x2: "28'", y2: "12'"}
+  - {id: W215, story: F2, kind: interior, x1: "28'", y1: "0'", x2: "28'", y2: "12'"}
+  - {id: W216, story: F2, kind: interior, x1: "38'", y1: "0'", x2: "38'", y2: "12'"}
+  - {id: W217, story: F2, kind: interior, x1: "48'", y1: "0'", x2: "48'", y2: "12'"}
+  - {id: W218, story: F2, kind: interior, x1: "48'", y1: "12'", x2: "56'", y2: "12'"}
+  - {id: W219, story: F2, kind: interior, x1: "20'", y1: "4'", x2: "28'", y2: "4'"}
+  - {id: W220, story: F2, kind: interior, x1: "48'", y1: "4'", x2: "56'", y2: "4'"}
+
+openings:
+  # offset measured from wall start point along wall direction.
+  - {id: D101, story: F1, type: door, host: W101, offset: "22'", width: "4'", height: "8'", name: Front Entry}
+  - {id: D102, story: F1, type: door, host: W111, offset: "4'", width: "3'", height: "6' 8\"", name: Theater Door}
+  - {id: D103, story: F1, type: door, host: W114, offset: "9'", width: "3'", height: "6' 8\"", name: Bedroom 2 Door}
+  - {id: D104, story: F1, type: door, host: W115, offset: "2' 6\"", width: "3'", height: "6' 8\"", name: Bath 2 Door}
+  - {id: D105, story: F1, type: door, host: W113, offset: "20'", width: "3'", height: "6' 8\"", name: Central Hall to Primary Suite}
+  - {id: D106, story: F1, type: door, host: W117, offset: "3'", width: "3'", height: "6' 8\"", name: Primary Bedroom Door}
+  - {id: D107, story: F1, type: door, host: W118, offset: "2'", width: "3'", height: "6' 8\"", name: Primary WIC Door}
+  - {id: D108, story: F1, type: door, host: W118, offset: "10'", width: "3'", height: "6' 8\"", name: Primary Bath Door}
+  - {id: D109, story: F1, type: door, host: W126, offset: "1' 6\"", width: "3'", height: "6' 8\"", name: Pantry Door}
+  - {id: D110, story: F1, type: door, host: W127, offset: "4' 6\"", width: "3'", height: "6' 8\"", name: Mud to Service Hall}
+  - {id: D111, story: F1, type: door, host: W128, offset: "2' 6\"", width: "3'", height: "6' 8\"", name: Mud to Mechanical}
+  - {id: D112, story: F1, type: door, host: W102, offset: "2'", width: "3'", height: "6' 8\"", name: Garage to Mud}
+  - {id: G101, story: F1, type: garage_door, host: W105, offset: "2'", width: "8'", height: "8'", name: Garage Bay 1}
+  - {id: G102, story: F1, type: garage_door, host: W105, offset: "12'", width: "8'", height: "8'", name: Garage Bay 2}
+  - {id: G103, story: F1, type: garage_door, host: W105, offset: "22'", width: "8'", height: "8'", name: Garage Bay 3}
+  - {id: WN101, story: F1, type: window, host: W104, offset: "3'", width: "6'", height: "5'", sill: "2' 6\"", name: Theater Side Window}
+  - {id: WN102, story: F1, type: window, host: W104, offset: "15'", width: "6'", height: "5'", sill: "2' 6\"", name: Bedroom 2 Side Window}
+  - {id: WN103, story: F1, type: window, host: W104, offset: "29'", width: "7'", height: "5'", sill: "2' 6\"", name: Primary Side Window}
+  - {id: WN104, story: F1, type: window, host: W103, offset: "50'", width: "6'", height: "5'", sill: "2' 6\"", name: Primary Rear Window}
+  - {id: WN105, story: F1, type: window, host: W103, offset: "35'", width: "5'", height: "4'", sill: "3'", name: Primary Bath Rear Window}
+  - {id: SD101, story: F1, type: slider, host: W103, offset: "18'", width: "6'", height: "8'", name: Living Rear Slider}
+  - {id: SD102, story: F1, type: slider, host: W103, offset: "4'", width: "6'", height: "8'", name: Dining Rear Slider}
+  - {id: WN107, story: F1, type: window, host: W102, offset: "33'", width: "5'", height: "5'", sill: "2' 6\"", name: Dining Side Window}
+  - {id: WN108, story: F1, type: window, host: W101, offset: "4'", width: "6'", height: "5'", sill: "2' 6\"", name: Theater Front Window}
+  - {id: WN109, story: F1, type: window, host: W101, offset: "31'", width: "4'", height: "5'", sill: "2' 6\"", name: Stair Front Window}
+  - {id: WN110, story: F1, type: window, host: W101, offset: "51'", width: "6'", height: "4'", sill: "3'", name: Mud Front Window}
+
+  - {id: D201, story: F2, type: door, host: W211, offset: "4'", width: "3'", height: "6' 8\"", name: Bedroom 3 Door}
+  - {id: D202, story: F2, type: door, host: W211, offset: "29'", width: "3'", height: "6' 8\"", name: Bedroom 4 Door}
+  - {id: D203, story: F2, type: door, host: W214, offset: "2' 6\"", width: "3'", height: "6' 8\"", name: Bath 3 Door}
+  - {id: D204, story: F2, type: door, host: W218, offset: "2' 6\"", width: "3'", height: "6' 8\"", name: Bath 4 Door}
+  - {id: WN201, story: F2, type: window, host: W203, offset: "24'", width: "6'", height: "5'", sill: "2' 6\"", name: Bedroom 3 Rear Window}
+  - {id: WN202, story: F2, type: window, host: W203, offset: "4'", width: "6'", height: "5'", sill: "2' 6\"", name: Bedroom 4 Rear Window}
+  - {id: WN203, story: F2, type: window, host: W204, offset: "16'", width: "4'", height: "4'", sill: "3'", name: Bath 3 Side Window}
+  - {id: WN204, story: F2, type: window, host: W202, offset: "5'", width: "4'", height: "4'", sill: "3'", name: Bath 4 Side Window}
+  - {id: WN205, story: F2, type: window, host: W201, offset: "10'", width: "4'", height: "5'", sill: "2' 6\"", name: Stair Front Window}
+  - {id: WN206, story: F2, type: window, host: W201, offset: "20'", width: "4'", height: "5'", sill: "2' 6\"", name: Loft Front Window}
+
+circulation_graph:
+  # Used for semantic route validation, not drawing geometry.
+  edges:
+    - [Exterior Front, Foyer]
+    - [Foyer, Central Hall]
+    - [Central Hall, Connector Hall]
+    - [Connector Hall, Kitchen]
+    - [Kitchen, Living]
+    - [Kitchen, Dining]
+    - [Central Hall, Guest Hall]
+    - [Guest Hall, Bedroom 2]
+    - [Central Hall, Primary Suite Hall]
+    - [Primary Suite Hall, Primary Bedroom]
+    - [Primary Suite Hall, Primary WIC]
+    - [Primary Suite Hall, Primary Bath]
+    - [Garage, Mud / Laundry]
+    - [Mud / Laundry, Service Hall]
+    - [Service Hall, Kitchen]
+    - [Central Hall, Stair]
+    - [Stair, Upper Hall]
+    - [Upper Hall, Bedroom 3]
+    - [Upper Hall, Bedroom 4]
+    - [Upper Hall, Bath 3]
+    - [Upper Hall, Bath 4]
