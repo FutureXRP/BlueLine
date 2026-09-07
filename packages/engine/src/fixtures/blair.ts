@@ -179,7 +179,7 @@ export function blairResidence(): HousePlanInput {
       'Primary bedroom ceiling is vaulted; drawn flat at 144" nominal pending vault support (scope flag).',
       'Family ceiling closed at 120" by the theater room added above (stock plan had an open volume).',
       'Upper-floor rooms over the kitchen/garage are inferred from the deck and theater; confirm layout.',
-      'MIL wing tie-in, second stair, and wing roof intersection require engineer review.',
+      'MIL wing is single story with no stair (owner-confirmed); wing tie-in and roof intersection require engineer review.',
     ],
   };
 }
